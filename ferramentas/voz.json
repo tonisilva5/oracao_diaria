@@ -1,0 +1,18 @@
+{
+  "motor": "edge",
+  "edge": {
+    "voz": "pt-PT-RaquelNeural",
+    "ritmo": "-12%",
+    "tom": "-2Hz"
+  },
+  "elevenlabs": {
+    "voice_id": "",
+    "model_id": "eleven_multilingual_v2",
+    "output_format": "mp3_44100_128",
+    "stability": 0.6,
+    "similarity_boost": 0.75,
+    "style": 0.05,
+    "speed": 0.9,
+    "use_speaker_boost": true
+  }
+}
