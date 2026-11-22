@@ -73,14 +73,14 @@ só na janela do terminal, sem aparecer no ecrã nem ficar no histórico:
 |---|---|
 | Ramo `master` | Versão `3.2.0`. Leituras, terço, voz `edge` (gratuita), offline. Testada em local: terço completo com a voz gravada, leituras gravadas, e abre sem servidor. |
 | Histórico | Recomeçado a 22/11/2026 a partir da versão 3.2.0. |
-| Publicação | **Repositório público e GitHub Pages** a servir o ramo `gh-pages`. Por fazer: pôr esta versão no GitHub, tornar o repositório público (Settings → General → *Danger Zone* → *Change visibility*), ligar as Actions (Settings → Actions → General), correr o *Áudio das leituras* e escolher `gh-pages` no Pages. |
+| Publicação | **Publicada** em **https://tonisilva5.github.io/oracao_diaria/**: GitHub Pages a servir o ramo `gh-pages` deste repositório, que é público. Verificada a 22/11/2026: abre, leituras com voz gravada, terço com voz guiada e orações guardadas para offline. |
+| Automação | *Áudio das leituras* corre todos os dias às 03:40 UTC e a cada envio para o `master`: grava as leituras dos próximos 4 dias e volta a publicar o site. |
 
 ---
 
 ## Próximos passos
 
-1. **Publicar**, como na linha *Publicação* acima. Depois, no iPhone, os passos 7 e 8 de
-   *Publicar e instalar no iPhone* no `LEIA-ME.md`.
+1. **Instalar no iPhone:** *Instalar no iPhone*, no `LEIA-ME.md`.
 2. **Intenção do Papa de dezembro de 2026:** foi traduzida da versão inglesa, porque a 22/11 ainda
    não havia texto português publicado (a de novembro já tem o texto oficial). Trocar pelo texto
    oficial quando sair (redemundialdeoracaodopapa.pt e popesprayer.va/pt-pt), regravar `papa-12`

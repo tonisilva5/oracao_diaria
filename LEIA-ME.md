@@ -30,11 +30,28 @@ python -m http.server 8123
 
 ## Publicar e instalar no iPhone
 
+A app está publicada em **https://tonisilva5.github.io/oracao_diaria/**, pelo GitHub Pages,
+a partir do ramo `gh-pages` do repositório público `tonisilva5/oracao_diaria`.
+
+O ramo `gh-pages` é feito pela automatização *Áudio das leituras*
+(`.github/workflows/audio-leituras.yml`). Corre todos os dias às 03:40 UTC e a cada envio para
+o `master`: grava as leituras dos próximos 4 dias e volta a publicar o site. Num repositório
+público, o GitHub desliga as corridas agendadas ao fim de 60 dias sem atividade, e por isso o
+último passo da automatização volta a ligá-la todos os dias.
+
+### Instalar no iPhone
+
+1. No **iPhone**, abra https://tonisilva5.github.io/oracao_diaria/ no **Safari** →
+   **Partilhar** → **Adicionar ao ecrã principal**.
+2. Abra a app pelo ícone, vá a **Definições** e toque em **Guardar orações no telemóvel**.
+   A partir daí o terço funciona sem rede.
+
+### Montar a publicação de raiz (noutro repositório)
+
 A app precisa de um endereço **https** para instalar e funcionar offline. **Não use o Netlify
 Drop sem conta**: esses sites são temporários e desaparecem ao fim de algumas semanas — foi o
-que fez a app deixar de abrir da primeira vez.
-
-### GitHub Pages (permanente e gratuito)
+que fez a app deixar de abrir da primeira vez. O GitHub Pages é permanente e gratuito, mas só
+para repositórios públicos.
 
 1. Crie um repositório novo em **https://github.com/new**, por exemplo `oracao-diaria`,
    marcado como **Public**.
