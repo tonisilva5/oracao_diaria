@@ -36,6 +36,12 @@ DESTINO = RAIZ / "audio" / "leituras"
 FONTE = "https://feed.evangelizo.org/v2/reader.php?date={}&type=xml&lang=PT"
 ESPERAS_FEED = (3, 6)   # segundos antes de cada nova tentativa ao feed
 
+# O texto do feed de cada dia, tal como veio, para publicar ao lado do áudio
+# (audio/leituras/AAAAMMDD.xml). A app lê-o primeiro do próprio site: no iPhone
+# o pedido direto ao Evangelizo falhava, e um ficheiro do mesmo endereço não
+# depende de outro site nem de bloqueadores. Só entra aqui um dia com leituras.
+XML_DO_DIA = {}
+
 SECCOES = [
     ("primeira", "reading_text1"),
     ("salmo", "reading_text2"),
@@ -80,6 +86,8 @@ def _ler_feed(dia: date) -> dict:
         texto = (elemento.text or "").strip() if elemento is not None else ""
         if len(texto) > 40:
             saida[chave] = texto
+    if "evangelho" in saida:
+        XML_DO_DIA[dia.strftime("%Y%m%d")] = bruto
     return saida
 
 
@@ -131,8 +139,9 @@ def principal(argv=None):
     else:
         DESTINO.mkdir(parents=True, exist_ok=True)
         # Fora da janela não interessa: apagar mantém o repositório pequeno.
-        for antigo in DESTINO.glob("*.mp3"):
-            if antigo.name.split("-")[0] not in validos:
+        antigos = list(DESTINO.glob("*.mp3")) + list(DESTINO.glob("*.xml"))
+        for antigo in antigos:
+            if antigo.name.split("-")[0].split(".")[0] not in validos:
                 antigo.unlink()
                 print(f"  apagado  {antigo.name}")
 
@@ -159,6 +168,9 @@ def principal(argv=None):
                 indice["dias"][etiqueta] = manter
                 print(f"  mantido  {etiqueta}: {', '.join(manter)} (do índice anterior)")
             continue
+
+        if not args.estimar and etiqueta in XML_DO_DIA:
+            (DESTINO / f"{etiqueta}.xml").write_text(XML_DO_DIA[etiqueta], encoding="utf-8")
 
         feitas = []
         for chave, texto in leituras.items():

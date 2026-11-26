@@ -8,7 +8,7 @@
    que vem da rede só entra na cache depois de verificado.
    ========================================================================= */
 
-const VERSAO = "3.2.0";
+const VERSAO = "3.3.0";
 const CACHE_APP = "od-app-" + VERSAO;    // casca da aplicação, renovada a cada versão
 // As orações gravadas sobrevivem de propósito às atualizações da app — são 6 MB
 // que ninguém quer voltar a descarregar por causa de um retoque no código.
@@ -263,6 +263,13 @@ self.addEventListener("fetch", e => {
   }
 
   if (url.origin !== location.origin) return;
+
+  /* Texto das leituras publicado pela automação (audio/leituras/AAAAMMDD.xml):
+     rede primeiro, para apanhar o texto do dia, e a cópia guardada sem rede. */
+  if (url.pathname.includes("/audio/leituras/") && /\.xml$/i.test(url.pathname)) {
+    e.respondWith(redePrimeiro(pedido, CACHE_LEITURAS, null, true));
+    return;
+  }
 
   /* Índice das leituras gravadas: muda todos os dias, por isso não pode vir da
      cache enquanto houver rede — senão a app ficava presa às gravações de ontem. */

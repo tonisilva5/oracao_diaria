@@ -9,7 +9,7 @@
    é preciso regravar o áudio correspondente (ver ferramentas/gerar_audio.py).
    ========================================================================= */
 
-const APP_VERSION = "3.2.0";
+const APP_VERSION = "3.3.0";
 
 /* ---------- Orações do terço ---------- */
 const ORACOES = {

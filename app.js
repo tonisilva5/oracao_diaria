@@ -575,28 +575,41 @@ function leituraCompleta(texto) {
     /<reading_gospel>(?!\s*(?:<!\[CDATA\[\s*\]\]>\s*)?<\/reading_gospel>)/i.test(texto);
 }
 
+/* Texto de um endereço, ou null. Uma ligação pendurada (rede fraca na igreja)
+   não pode deixar o ecrã eternamente a carregar. */
+async function pedirTexto(endereco, ms) {
+  const ctl = typeof AbortController === "function" ? new AbortController() : null;
+  const limite = ctl ? setTimeout(() => ctl.abort(), ms) : null;
+  try {
+    const resp = await fetch(endereco, ctl ? { signal: ctl.signal } : undefined);
+    if (!resp.ok) return null;
+    return await resp.text();
+  } catch (err) {
+    return null;
+  } finally {
+    if (limite) clearTimeout(limite);
+  }
+}
+
 async function obterXml(d) {
   const chaveCache = "od_leit_" + yyyymmdd(d);
   // As leituras de um dia não mudam: havendo cópia completa, nem se vai à rede.
   const guardado = lido(chaveCache, null);
   if (leituraCompleta(guardado)) return guardado;
 
-  // Uma ligação pendurada (rede fraca na igreja) não pode deixar o ecrã
-  // eternamente a carregar.
-  const ctl = typeof AbortController === "function" ? new AbortController() : null;
-  const limite = ctl ? setTimeout(() => ctl.abort(), 8000) : null;
-  try {
-    const resp = await fetch(urlEvangelizo(d), ctl ? { signal: ctl.signal } : undefined);
-    if (!resp.ok) throw new Error("HTTP " + resp.status);
-    const texto = await resp.text();
-    if (!/<evangelizo>/i.test(texto)) throw new Error("Resposta inesperada");
-    if (leituraCompleta(texto)) guardar(chaveCache, texto);
-    return texto;
-  } catch (err) {
-    return guardado;
-  } finally {
-    if (limite) clearTimeout(limite);
+  // Primeiro a cópia publicada no próprio site pela automação diária (os
+  // próximos dias). No iPhone o pedido direto ao Evangelizo falhava; um
+  // ficheiro do mesmo endereço da app não depende de outro site.
+  const doSite = await pedirTexto(`audio/leituras/${yyyymmdd(d)}.xml`, 8000);
+  if (leituraCompleta(doSite)) { guardar(chaveCache, doSite); return doSite; }
+
+  // Dias fora dessa janela (anteriores ou mais adiante): o Evangelizo.
+  const doFeed = await pedirTexto(urlEvangelizo(d), 8000);
+  if (doFeed && /<evangelizo>/i.test(doFeed)) {
+    if (leituraCompleta(doFeed)) guardar(chaveCache, doFeed);
+    return doFeed;
   }
+  return guardado;
 }
 
 let pedidoLeituras = 0;   // só o pedido mais recente pode desenhar o ecrã

@@ -792,6 +792,28 @@ class ScriptsUsamAVoz(Base):
             with self.assertRaises(OSError):
                 gerar_leituras.buscar(None)
 
+    def test_leituras_publica_o_texto_do_feed_e_limpa_o_antigo(self):
+        self.leituras = self.tmp / "leituras"
+        p = mock.patch.object(gerar_leituras, "DESTINO", self.leituras)
+        p.start()
+        self.addCleanup(p.stop)
+        texto = "Leitura do dia, com texto suficiente para contar. " * 2
+        xml = ("<?xml version='1.0' encoding='UTF-8'?><data-set><evangelizo>"
+               f"<reading_text1>{texto}</reading_text1><reading_gospel>{texto}</reading_gospel>"
+               "</evangelizo></data-set>")
+
+        class Resposta(RespostaFalsa):
+            pass
+
+        self.leituras.mkdir(parents=True)
+        (self.leituras / "20000101.xml").write_text("<antigo/>", encoding="utf-8")
+        with mock.patch("urllib.request.urlopen", return_value=Resposta(xml.encode("utf-8"))):
+            self.correr_leituras("--dias", "2")
+        xmls = sorted(p.name for p in self.leituras.glob("*.xml"))
+        self.assertEqual(len(xmls), 2)                                   # um por dia; o antigo saiu
+        self.assertNotIn("20000101.xml", xmls)
+        self.assertEqual((self.leituras / xmls[0]).read_text(encoding="utf-8"), xml)
+
     def test_leituras_erro_fatal_sai_com_erro(self):
         self.preparar_leituras()
         self.sintetizar.side_effect = voz.ErroVozFatal("sem chave")
