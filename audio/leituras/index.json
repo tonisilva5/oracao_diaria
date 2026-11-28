@@ -1,0 +1,26 @@
+{
+  "voz": "edge:pt-PT-RaquelNeural",
+  "dias": {
+    "20261128": [
+      "primeira",
+      "salmo",
+      "evangelho"
+    ],
+    "20261129": [
+      "primeira",
+      "salmo",
+      "segunda",
+      "evangelho"
+    ],
+    "20261130": [
+      "primeira",
+      "salmo",
+      "evangelho"
+    ],
+    "20261201": [
+      "primeira",
+      "salmo",
+      "evangelho"
+    ]
+  }
+}

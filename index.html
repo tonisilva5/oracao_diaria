@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#1b2740" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f0e6" media="(prefers-color-scheme: light)" />
+  <title>Oração Diária</title>
+  <meta name="description" content="Leituras diárias da Igreja Católica e terço guiado com as intenções do Papa, com leitura em voz alta." />
+
+  <!-- PWA / iOS ecrã principal -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Oração Diária" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Barra superior -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="name"><span class="cross">✝</span>Oração Diária</span>
+        <span class="date" id="topDate">—</span>
+      </div>
+      <button class="icon-btn" id="btnSettings" aria-label="Definições" title="Definições">⚙</button>
+    </header>
+
+    <main>
+      <!-- ================= INÍCIO ================= -->
+      <section class="view active" id="view-inicio">
+        <div class="card hero">
+          <div class="eyebrow">Hoje</div>
+          <h1 id="heroTitulo">Bem-vindo</h1>
+          <div class="sub" id="heroSub">Leituras do dia e terço com as intenções do Papa</div>
+        </div>
+
+        <div class="quick-grid">
+          <button class="quick" data-goto="leituras">
+            <span class="q-emoji">📖</span>
+            <span class="q-title">Leitura do dia</span>
+            <span class="q-desc">Leituras, salmo e Evangelho de hoje, com leitura em voz alta.</span>
+          </button>
+          <button class="quick" data-goto="terco">
+            <span class="q-emoji">📿</span>
+            <span class="q-title">Rezar o terço</span>
+            <span class="q-desc" id="quickTercoDesc">Terço guiado, com os mistérios do dia.</span>
+          </button>
+        </div>
+
+        <div class="card intencao-card" id="homeIntencao">
+          <div class="eyebrow">Intenção do Papa · <span id="intMes">—</span></div>
+          <div class="tema" id="intTema">—</div>
+          <div class="texto" id="intTexto">—</div>
+          <div class="assina" id="intAssina">—</div>
+        </div>
+      </section>
+
+      <!-- ================= LEITURAS ================= -->
+      <section class="view" id="view-leituras">
+        <div class="date-nav">
+          <button id="diaAnterior" aria-label="Dia anterior">‹</button>
+          <span class="today-lbl" id="leituraData">—</span>
+          <button id="diaSeguinte" aria-label="Dia seguinte">›</button>
+        </div>
+        <button class="big-action gold" id="lerTudo">🔊 Ler tudo em voz alta</button>
+        <div id="leiturasConteudo">
+          <div class="status"><div class="spinner"></div>A carregar as leituras…</div>
+        </div>
+      </section>
+
+      <!-- ================= TERÇO ================= -->
+      <section class="view" id="view-terco">
+        <!-- Configuração -->
+        <div class="terco-setup" id="tercoSetup">
+          <div class="card">
+            <div class="eyebrow">Santo Terço</div>
+            <h2>Escolha os mistérios</h2>
+            <p style="color:var(--muted);font-size:14px;margin:6px 0 0;">
+              Sugestão para hoje já assinalada. Toque para começar.
+            </p>
+            <div class="misterios-opts" id="misteriosOpts"></div>
+          </div>
+          <div class="card mini-intencao" style="margin-top:0;">
+            Rezaremos também <b>pelas intenções do Santo Padre</b><span id="setupIntencao"></span>
+          </div>
+          <button class="big-action" id="iniciarTerco">📿 Começar o terço</button>
+        </div>
+
+        <!-- Execução -->
+        <div class="terco-runner" id="tercoRunner">
+          <div class="terco-toolbar">
+            <button class="chip" id="btnSairTerco">‹ Sair</button>
+            <button class="chip wide" id="chipVoz">🔊 Voz guiada: desligada</button>
+          </div>
+          <div class="mini-intencao" id="runnerIntencao"></div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><span id="tercoProg"></span></div>
+            <div class="progress-meta">
+              <span id="tercoFase">—</span>
+              <span id="tercoContagem">—</span>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-kind" id="stepKind">—</div>
+            <div class="step-title" id="stepTitle">—</div>
+            <div id="stepBeads" class="beads hidden"></div>
+            <div class="step-body" id="stepBody">—</div>
+            <div class="step-controls">
+              <button class="nav-btn prev" id="stepPrev" aria-label="Anterior">‹</button>
+              <button class="nav-btn next" id="stepNext">Seguinte ›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= DEFINIÇÕES ================= -->
+      <section class="view" id="view-definicoes">
+
+        <div class="card">
+          <div class="eyebrow">Voz</div>
+          <h2>Orações gravadas</h2>
+          <p class="about" style="margin-top:2px;">
+            As orações do terço são lidas por uma voz portuguesa gravada, muito mais natural
+            do que a voz do telemóvel. Funcionam sem internet.
+          </p>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Usar a voz gravada</div>
+              <div class="s-desc">Se desligar, o terço e as leituras passam a ser lidos pela voz do telemóvel.</div>
+            </div>
+            <input type="checkbox" id="vozGravada" checked class="switch" />
+          </div>
+          <div class="aviso" id="estadoAudio">A verificar…</div>
+          <button class="speak-btn" id="btnDescarregarAudio" style="margin-top:12px;">
+            ⬇ Guardar orações no telemóvel
+          </button>
+          <button class="speak-btn" id="testarVoz" style="margin-top:12px;">▶ Ouvir uma Avé-Maria</button>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Terço</div>
+          <h2>Orações a incluir</h2>
+          <p class="about" style="margin-top:2px;">
+            O terço vem como se reza tradicionalmente em Portugal. Pode encurtá-lo aqui.
+          </p>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">«Ó Maria concebida sem pecado»</div>
+              <div class="s-desc">Jaculatória no fim de cada dezena, como no Santuário de Fátima.</div>
+            </div>
+            <input type="checkbox" id="optJaculatoria" checked class="switch" />
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Versículo e oração final</div>
+              <div class="s-desc">«Rogai por nós, Santa Mãe de Deus» e a oração final do Rosário.</div>
+            </div>
+            <input type="checkbox" id="optFinais" checked class="switch" />
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Ladainha de Nossa Senhora</div>
+              <div class="s-desc">Em Portugal reza-se sobretudo em maio e outubro.</div>
+            </div>
+            <select id="optLadainha">
+              <option value="nunca">Nunca</option>
+              <option value="marianos">Em maio e outubro</option>
+              <option value="sempre">Sempre</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">«Sob vossa proteção» e São Miguel</div>
+              <div class="s-desc">Acrescento pedido pelo Papa em 2018, habitual em outubro.</div>
+            </div>
+            <input type="checkbox" id="optPapa" class="switch" />
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Avançar sozinho</div>
+              <div class="s-desc">Com a voz guiada, passa ao passo seguinte automaticamente.</div>
+            </div>
+            <input type="checkbox" id="autoAvancar" checked class="switch" />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Voz do telemóvel</div>
+          <h2>Leituras do dia</h2>
+          <p class="about" style="margin-top:2px;">
+            As leituras são gravadas todos os dias com a mesma voz das orações. Quando falta a
+            gravação de um dia, são lidas pela voz do telemóvel, que se escolhe aqui.
+          </p>
+          <div class="aviso" id="avisoVoz">A verificar…</div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Voz</div>
+              <div class="s-desc">As marcadas com ⭐ têm melhor qualidade.</div>
+            </div>
+            <select id="vozSelect"><option>A carregar…</option></select>
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Velocidade</div>
+              <div class="s-desc">Mais lenta é mais serena para rezar.</div>
+            </div>
+            <input type="range" id="vozRate" min="0.6" max="1.3" step="0.02" value="0.88" />
+            <span class="rate-val" id="rateVal">0.88×</span>
+          </div>
+          <div class="setting-row">
+            <div class="s-txt">
+              <div class="s-title">Tom</div>
+              <div class="s-desc">Mais grave é mais suave.</div>
+            </div>
+            <input type="range" id="vozPitch" min="0.7" max="1.2" step="0.02" value="0.96" />
+            <span class="rate-val" id="pitchVal">0.96</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Sobre</div>
+          <h2>Oração Diária</h2>
+          <p class="about">
+            Leituras litúrgicas do dia em português, terço guiado com os mistérios de cada dia
+            e as intenções mensais de oração do Santo Padre.
+          </p>
+          <p class="about">
+            Leituras: <b>Evangelizo.org</b>, com o texto do Lecionário português.<br />
+            Orações: <b>santidade.net</b>; estrutura do terço: <b>Santuário de Fátima</b>.<br />
+            Intenções do Papa: <b>Rede Mundial de Oração do Papa</b>.<br />
+            Voz das orações e das leituras: <b>pt-PT Raquel</b>, motor neural da Microsoft.
+          </p>
+          <p class="about" id="offlineNote"></p>
+          <p class="about" style="opacity:.7;">Versão <span id="appVersao">—</span></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Barra de leitura em voz flutuante -->
+    <div class="voice-bar" id="voiceBar">
+      <div class="inner">
+        <div class="vb-label">
+          <div class="l1" id="vbTitle">A ler…</div>
+          <div class="l2" id="vbSub">Oração Diária</div>
+        </div>
+        <button id="vbToggle" class="primary" aria-label="Pausa/continuar">⏸</button>
+        <button id="vbStop" aria-label="Parar">⏹</button>
+      </div>
+    </div>
+
+    <!-- Barra de separadores -->
+    <nav class="tabbar" id="tabbar">
+      <button class="tab active" data-view="inicio"><span class="t-emoji">🏠</span>Início</button>
+      <button class="tab" data-view="leituras"><span class="t-emoji">📖</span>Leituras</button>
+      <button class="tab" data-view="terco"><span class="t-emoji">📿</span>Terço</button>
+      <button class="tab" data-view="definicoes"><span class="t-emoji">⚙️</span>Definições</button>
+    </nav>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

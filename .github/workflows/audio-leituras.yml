@@ -1,0 +1,103 @@
+# Grava as leituras dos próximos dias com a voz configurada e publica o site.
+#
+# O motor de voz escolhe-se em ferramentas/voz.json ("edge" ou "elevenlabs"),
+# o mesmo ficheiro que serve às orações gravadas (gerar_audio.py), por isso
+# orações e leituras falam com a mesma voz. Com "elevenlabs" é preciso o segredo
+# ELEVENLABS_API_KEY (Settings > Secrets and variables > Actions); com "edge"
+# não é preciso nada. A chave só passa por variável de ambiente.
+#
+# Porquê um ramo à parte: os ficheiros de áudio mudam todos os dias, e se
+# fossem sendo acrescentados ao ramo principal o histórico do repositório
+# cresceria uns 700 MB por ano. Aqui o ramo gh-pages é reescrito de raiz a
+# cada dia, com um só commit, por isso não acumula nada.
+#
+# Se a gravação falhar (o serviço do motor pode estar em baixo, ter acabado os
+# créditos, ou, no caso do edge, que é de acesso não oficial, ter sido
+# bloqueado), o site é publicado na mesma e a aplicação lê as leituras com a
+# voz do telemóvel, como fazia antes.
+
+name: Áudio das leituras
+
+on:
+  schedule:
+    - cron: "40 3 * * *"    # todos os dias às 3h40 UTC
+  push:                      # uma alteração ao código chega ao site logo, sem esperar pela madrugada
+    branches: [main, master]
+  workflow_dispatch:         # permite correr à mão no separador Actions
+
+permissions:
+  contents: write
+  actions: write   # só para o último passo, que mantém a corrida diária ligada
+
+concurrency:
+  group: audio-leituras
+  cancel-in-progress: false
+
+jobs:
+  gravar:
+    # Um envio só publica se for para o ramo por omissão — o mesmo que a corrida
+    # diária publica —, senão o site alternaria entre dois ramos.
+    if: github.event_name != 'push' || github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter o código
+        uses: actions/checkout@v5
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # Só o motor "edge" precisa disto; o "elevenlabs" usa a biblioteca padrão.
+      # Fica sempre: é barato e deixa trocar de motor só em voz.json.
+      - name: Instalar o motor de voz
+        run: pip install --quiet edge-tts
+
+      # O áudio das leituras não vem no ramo principal. Sem isto, cada corrida
+      # regravaria a janela inteira (4 dias, ~10 mil caracteres) — com um motor
+      # pago, o triplo do necessário. Recupera-se o que já está publicado e só os
+      # dias novos vão ao motor. Na primeira corrida ainda não há gh-pages.
+      - name: Recuperar as leituras já publicadas
+        continue-on-error: true
+        run: |
+          if git fetch --quiet --depth 1 origin gh-pages; then
+            git checkout FETCH_HEAD -- audio/leituras 2>/dev/null || echo "Ainda não há leituras publicadas."
+            git reset --quiet -- audio/leituras 2>/dev/null || true
+          fi
+
+      - name: Gravar as leituras dos próximos dias
+        id: gravar
+        continue-on-error: true
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python ferramentas/gerar_leituras.py --dias 4
+
+      - name: Avisar se a gravação falhou
+        if: steps.gravar.outcome == 'failure'
+        run: echo "::warning::Não foi possível gravar as leituras. O site é publicado na mesma e a app usa a voz do telemóvel."
+
+      - name: Publicar o site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan publicacao
+          git add -A
+          # O .gitignore exclui o áudio das leituras do ramo principal; aqui, no
+          # ramo publicado, ele tem de entrar à força — senão o site sai sem ele.
+          if [ -d audio/leituras ]; then git add -f audio/leituras; fi
+          # O que é só de desenvolvimento não vai para o site, mesmo que tenha
+          # entrado no ramo principal por um envio pela página do GitHub.
+          git rm -r -q --cached --ignore-unmatch -- .claude ':(glob)**/__pycache__/**' ':(glob)**/*.parcial'
+          git commit -m "Site com as leituras de $(date -u +%Y-%m-%d)"
+          git push --force origin publicacao:gh-pages
+
+      # Num repositório público, o GitHub desliga as corridas agendadas ao fim de
+      # 60 dias sem atividade no repositório, e as leituras deixariam de ser
+      # gravadas sem ninguém dar por isso. Voltar a ligar este fluxo todos os dias
+      # recomeça essa contagem.
+      - name: Manter a corrida diária ligada
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/audio-leituras.yml/enable"

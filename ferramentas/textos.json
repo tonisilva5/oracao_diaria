@@ -1,0 +1,260 @@
+{
+  "versao": "3.3.0",
+  "itens": [
+    {
+      "id": "sinal-da-cruz",
+      "titulo": "Sinal da Cruz",
+      "texto": "Em nome do Pai, e do Filho, e do Espírito Santo. Ámen."
+    },
+    {
+      "id": "oferecimento",
+      "titulo": "Oferecimento do Terço",
+      "texto": "Divino Jesus, nós Vos oferecemos este terço que vamos rezar, meditando nos mistérios da Vossa Redenção. Concedei-nos, por intercessão da Virgem Maria, Mãe de Deus e nossa Mãe, as virtudes que nos são necessárias e a graça de o rezarmos bem."
+    },
+    {
+      "id": "credo",
+      "titulo": "Credo (Símbolo Niceno-Constantinopolitano)",
+      "texto": "Creio em um só Deus, Pai todo-poderoso Criador do Céu e da Terra, de todas as coisas visíveis e invisíveis. Creio em um só Senhor, Jesus Cristo, Filho Unigénito de Deus, nascido do Pai antes de todos os séculos: Deus de Deus, luz da luz, Deus verdadeiro de Deus verdadeiro; gerado, não criado, consubstancial ao Pai. Por Ele todas as coisas foram feitas. E por nós homens e para nossa salvação desceu dos Céus. E encarnou pelo Espírito Santo, no seio da Virgem Maria, e se fez homem. Também por nós foi crucificado sob Pôncio Pilatos; padeceu e foi sepultado. Ressuscitou ao terceiro dia, conforme as Escrituras; e subiu aos Céus, onde está sentado à direita do Pai. De novo há-de vir em sua glória para julgar os vivos e os mortos; e o seu Reino não terá fim. Creio no Espírito Santo, Senhor que dá a vida, e procede do Pai e do Filho; e com o Pai e o Filho é adorado e glorificado: Ele que falou pelos profetas. Creio na Igreja una, santa, católica e apostólica. Professo um só Baptismo para a remissão dos pecados. E espero a ressurreição dos mortos e a vida do mundo que há-de vir. Ámen."
+    },
+    {
+      "id": "pai-nosso",
+      "titulo": "Pai-Nosso",
+      "texto": "Pai Nosso, que estais nos Céus, santificado seja o Vosso Nome, venha a nós o Vosso Reino, seja feita a Vossa vontade, assim na Terra como no Céu. O pão nosso de cada dia nos dai hoje, perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido, e não nos deixeis cair em tentação, mas livrai-nos do mal. Ámen."
+    },
+    {
+      "id": "ave-maria",
+      "titulo": "Avé-Maria",
+      "texto": "Avé-Maria, cheia de graça, o Senhor é convosco, bendita sois Vós entre as mulheres e bendito é o fruto do Vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Ámen."
+    },
+    {
+      "id": "gloria",
+      "titulo": "Glória ao Pai",
+      "texto": "Glória ao Pai e ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Ámen."
+    },
+    {
+      "id": "o-meu-jesus",
+      "titulo": "Ó meu Jesus (Oração de Fátima)",
+      "texto": "Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno; levai as almas todas para o Céu, principalmente as que mais precisarem."
+    },
+    {
+      "id": "o-maria-concebida",
+      "titulo": "Ó Maria concebida sem pecado",
+      "texto": "Ó Maria concebida sem pecado, rogai por nós que recorremos a Vós."
+    },
+    {
+      "id": "ave-maria-fe",
+      "titulo": "1.ª Avé-Maria — pela Fé",
+      "texto": "Pela virtude da Fé.\n\nAvé-Maria, cheia de graça, o Senhor é convosco, bendita sois Vós entre as mulheres e bendito é o fruto do Vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Ámen."
+    },
+    {
+      "id": "ave-maria-esperanca",
+      "titulo": "2.ª Avé-Maria — pela Esperança",
+      "texto": "Pela virtude da Esperança.\n\nAvé-Maria, cheia de graça, o Senhor é convosco, bendita sois Vós entre as mulheres e bendito é o fruto do Vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Ámen."
+    },
+    {
+      "id": "ave-maria-caridade",
+      "titulo": "3.ª Avé-Maria — pela Caridade",
+      "texto": "Pela virtude da Caridade.\n\nAvé-Maria, cheia de graça, o Senhor é convosco, bendita sois Vós entre as mulheres e bendito é o fruto do Vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Ámen."
+    },
+    {
+      "id": "salve-rainha",
+      "titulo": "Salve-Rainha",
+      "texto": "Salvé, Rainha, mãe de misericórdia, vida, doçura e esperança nossa, salve! A Vós bradamos, os degredados filhos de Eva. A Vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses Vossos olhos misericordiosos a nós volvei. E, depois deste desterro, nos mostrai Jesus, bendito fruto do Vosso ventre. Ó clemente, ó piedosa, ó doce Virgem Maria."
+    },
+    {
+      "id": "versiculo-final",
+      "titulo": "Rogai por nós, Santa Mãe de Deus",
+      "texto": "Rogai por nós, Santa Mãe de Deus.\n\nPara que sejamos dignos das promessas de Cristo."
+    },
+    {
+      "id": "oracao-final",
+      "titulo": "Oração final do Rosário",
+      "texto": "Oremos: Infundi, Senhor, a vossa graça, em nossas almas, para que nós, que, pela anunciação do Anjo, conhecemos a encarnação de Cristo, vosso Filho, pela sua paixão e morte na cruz, sejamos conduzidos à glória da Ressurreição. Pelo mesmo Cristo Senhor nosso. Ámen."
+    },
+    {
+      "id": "sob-vossa-proteccao",
+      "titulo": "Sob vossa protecção",
+      "texto": "À Vossa protecção recorremos, Santa Mãe de Deus; não desprezeis as nossas súplicas em nossas necessidades; mas livrai-nos de todos os perigos, ó Virgem gloriosa e bendita."
+    },
+    {
+      "id": "sao-miguel",
+      "titulo": "Oração a São Miguel Arcanjo",
+      "texto": "São Miguel Arcanjo, defendei-nos neste combate, sede o nosso auxílio contra as maldades e as ciladas do demónio. Instante e humildemente vos pedimos que Deus sobre ele impere. E vós, Príncipe da Milícia Celeste, com esse poder divino, precipitai no inferno a satanás e aos outros espíritos malignos que vagueiam pelo mundo para perdição das almas. Ámen."
+    },
+    {
+      "id": "ladainha",
+      "titulo": "Ladainha de Nossa Senhora",
+      "texto": "Senhor, tende piedade de nós.\nCristo, tende piedade de nós.\nSenhor, tende piedade de nós.\nCristo, ouvi-nos.\nCristo, atendei-nos.\nDeus Pai do Céu, tende piedade de nós.\nDeus Filho, Redentor do mundo, tende piedade de nós.\nDeus Espírito Santo, tende piedade de nós.\nSantíssima Trindade, que sois um só Deus, tende piedade de nós.\n\nSanta Maria, rogai por nós.\nSanta Mãe de Deus, rogai por nós.\nSanta Virgem das virgens, rogai por nós.\nMãe de Cristo, rogai por nós.\nMãe da Igreja, rogai por nós.\nMãe da divina graça, rogai por nós.\nMãe puríssima, rogai por nós.\nMãe castíssima, rogai por nós.\nMãe sempre virgem, rogai por nós.\nMãe imaculada, rogai por nós.\nMãe amável, rogai por nós.\nMãe admirável, rogai por nós.\nMãe do bom conselho, rogai por nós.\nMãe do Criador, rogai por nós.\nMãe do Salvador, rogai por nós.\n\nVirgem prudentíssima, rogai por nós.\nVirgem digna de veneração, rogai por nós.\nVirgem digna de louvor, rogai por nós.\nVirgem poderosa, rogai por nós.\nVirgem clemente, rogai por nós.\nVirgem fiel, rogai por nós.\n\nEspelho de justiça, rogai por nós.\nTrono da sabedoria, rogai por nós.\nCausa da nossa alegria, rogai por nós.\nVaso espiritual, rogai por nós.\nVaso digno de honra, rogai por nós.\nVaso insigne de devoção, rogai por nós.\nRosa mística, rogai por nós.\nTorre de David, rogai por nós.\nTorre de marfim, rogai por nós.\nCasa de ouro, rogai por nós.\nArca da aliança, rogai por nós.\nPorta do Céu, rogai por nós.\nEstrela da manhã, rogai por nós.\n\nSaúde dos enfermos, rogai por nós.\nRefúgio dos pecadores, rogai por nós.\nConsoladora dos aflitos, rogai por nós.\nAuxílio dos cristãos, rogai por nós.\n\nRainha dos Anjos, rogai por nós.\nRainha dos Patriarcas, rogai por nós.\nRainha dos Profetas, rogai por nós.\nRainha dos Apóstolos, rogai por nós.\nRainha dos Mártires, rogai por nós.\nRainha dos Confessores da Fé, rogai por nós.\nRainha das Virgens, rogai por nós.\nRainha de todos os Santos, rogai por nós.\nRainha concebida sem pecado original, rogai por nós.\nRainha elevada ao Céu, rogai por nós.\nRainha do Santíssimo Rosário, rogai por nós.\nRainha da família, rogai por nós.\nRainha da paz, rogai por nós.\n\nCordeiro de Deus, que tirais o pecado do mundo, perdoai-nos, Senhor.\nCordeiro de Deus, que tirais o pecado do mundo, ouvi-nos, Senhor.\nCordeiro de Deus, que tirais o pecado do mundo, tende piedade de nós."
+    },
+    {
+      "id": "conclusao",
+      "titulo": "Terço concluído",
+      "texto": "Que a Virgem Maria interceda por si e pelas intenções do Santo Padre.\n\nLouvado seja Nosso Senhor Jesus Cristo."
+    },
+    {
+      "id": "gozoso-1",
+      "titulo": "1.º Mistério Gozoso — A Anunciação do Anjo a Nossa Senhora",
+      "texto": "1.º Mistério Gozoso — A Anunciação do Anjo a Nossa Senhora. O Anjo anuncia a Maria que será Mãe do Filho de Deus, e ela responde: «Eis a serva do Senhor.» Peçamos a humildade e a disponibilidade de Maria."
+    },
+    {
+      "id": "gozoso-2",
+      "titulo": "2.º Mistério Gozoso — A Visitação de Nossa Senhora a Santa Isabel",
+      "texto": "2.º Mistério Gozoso — A Visitação de Nossa Senhora a Santa Isabel. Maria parte apressadamente para servir a sua prima Isabel. Peçamos um coração atento, pronto a servir quem precisa de nós."
+    },
+    {
+      "id": "gozoso-3",
+      "titulo": "3.º Mistério Gozoso — O Nascimento de Jesus em Belém",
+      "texto": "3.º Mistério Gozoso — O Nascimento de Jesus em Belém. O Filho de Deus nasce pobre, numa manjedoura. Peçamos a simplicidade de coração e a alegria de acolher Jesus."
+    },
+    {
+      "id": "gozoso-4",
+      "titulo": "4.º Mistério Gozoso — A Apresentação do Menino Jesus no Templo",
+      "texto": "4.º Mistério Gozoso — A Apresentação do Menino Jesus no Templo. Maria e José oferecem o Menino ao Senhor, e Simeão reconhece n'Ele a luz das nações. Peçamos a graça de nos entregarmos inteiramente a Deus."
+    },
+    {
+      "id": "gozoso-5",
+      "titulo": "5.º Mistério Gozoso — A Perda e o Encontro do Menino Jesus no Templo",
+      "texto": "5.º Mistério Gozoso — A Perda e o Encontro do Menino Jesus no Templo. Depois de três dias de angústia, Maria e José encontram Jesus no Templo. Peçamos a graça de O procurar sempre, mesmo quando parece ausente."
+    },
+    {
+      "id": "doloroso-1",
+      "titulo": "1.º Mistério Doloroso — A Agonia de Jesus no Horto",
+      "texto": "1.º Mistério Doloroso — A Agonia de Jesus no Horto. No Getsémani, Jesus reza: «Não se faça a minha vontade, mas a Vossa.» Peçamos força para aceitar a vontade de Deus nas horas de provação."
+    },
+    {
+      "id": "doloroso-2",
+      "titulo": "2.º Mistério Doloroso — A Flagelação de Jesus",
+      "texto": "2.º Mistério Doloroso — A Flagelação de Jesus. Jesus é açoitado por nossa causa, em silêncio. Peçamos a pureza de coração e a coragem de renunciar ao que nos afasta de Deus."
+    },
+    {
+      "id": "doloroso-3",
+      "titulo": "3.º Mistério Doloroso — A Coroação de Espinhos",
+      "texto": "3.º Mistério Doloroso — A Coroação de Espinhos. Coroam Jesus de espinhos e escarnecem d'Ele. Peçamos humildade e paciência diante das humilhações."
+    },
+    {
+      "id": "doloroso-4",
+      "titulo": "4.º Mistério Doloroso — Jesus a caminho do Calvário com a Cruz às costas",
+      "texto": "4.º Mistério Doloroso — Jesus a caminho do Calvário com a Cruz às costas. Jesus carrega a cruz e cai, e volta a levantar-se. Peçamos paciência para carregar a nossa cruz de cada dia."
+    },
+    {
+      "id": "doloroso-5",
+      "titulo": "5.º Mistério Doloroso — A Crucifixão e Morte de Jesus",
+      "texto": "5.º Mistério Doloroso — A Crucifixão e Morte de Jesus. Do alto da cruz, Jesus perdoa e entrega-nos a sua Mãe. Peçamos verdadeira contrição e um coração capaz de perdoar."
+    },
+    {
+      "id": "glorioso-1",
+      "titulo": "1.º Mistério Glorioso — A Ressurreição de Jesus",
+      "texto": "1.º Mistério Glorioso — A Ressurreição de Jesus. Ao terceiro dia, Jesus ressuscita e vence a morte. Peçamos uma fé viva e a esperança que não se deixa abater."
+    },
+    {
+      "id": "glorioso-2",
+      "titulo": "2.º Mistério Glorioso — A Ascensão de Jesus ao Céu",
+      "texto": "2.º Mistério Glorioso — A Ascensão de Jesus ao Céu. Jesus sobe ao Céu e senta-Se à direita do Pai. Peçamos o desejo das coisas do alto, sem fugir às deste mundo."
+    },
+    {
+      "id": "glorioso-3",
+      "titulo": "3.º Mistério Glorioso — A Vinda do Espírito Santo",
+      "texto": "3.º Mistério Glorioso — A Vinda do Espírito Santo. No Pentecostes, o Espírito Santo desce sobre Maria e os Apóstolos. Peçamos os seus dons e a coragem de dar testemunho."
+    },
+    {
+      "id": "glorioso-4",
+      "titulo": "4.º Mistério Glorioso — A Assunção de Nossa Senhora ao Céu",
+      "texto": "4.º Mistério Glorioso — A Assunção de Nossa Senhora ao Céu. Maria é elevada ao Céu em corpo e alma. Peçamos a graça de uma boa morte e uma verdadeira devoção a Nossa Senhora."
+    },
+    {
+      "id": "glorioso-5",
+      "titulo": "5.º Mistério Glorioso — A Coroação de Nossa Senhora",
+      "texto": "5.º Mistério Glorioso — A Coroação de Nossa Senhora. Maria é coroada Rainha do Céu e da Terra. Peçamos a sua protecção maternal e a perseverança até ao fim."
+    },
+    {
+      "id": "luminoso-1",
+      "titulo": "1.º Mistério Luminoso — O Baptismo de Jesus no rio Jordão",
+      "texto": "1.º Mistério Luminoso — O Baptismo de Jesus no rio Jordão. O Pai proclama: «Este é o meu Filho muito amado.» Peçamos fidelidade às promessas do nosso próprio Baptismo."
+    },
+    {
+      "id": "luminoso-2",
+      "titulo": "2.º Mistério Luminoso — As Bodas de Caná",
+      "texto": "2.º Mistério Luminoso — As Bodas de Caná. A pedido de Maria, Jesus realiza o primeiro sinal, e ela diz-nos: «Fazei tudo o que Ele vos disser.» Peçamos confiança na sua intercessão."
+    },
+    {
+      "id": "luminoso-3",
+      "titulo": "3.º Mistério Luminoso — O Anúncio do Reino de Deus",
+      "texto": "3.º Mistério Luminoso — O Anúncio do Reino de Deus. Jesus anuncia o Reino e chama à conversão. Peçamos um coração disposto a mudar de vida."
+    },
+    {
+      "id": "luminoso-4",
+      "titulo": "4.º Mistério Luminoso — A Transfiguração de Jesus",
+      "texto": "4.º Mistério Luminoso — A Transfiguração de Jesus. No monte Tabor, Jesus revela a sua glória aos discípulos. Peçamos o desejo sincero da santidade."
+    },
+    {
+      "id": "luminoso-5",
+      "titulo": "5.º Mistério Luminoso — A Instituição da Eucaristia",
+      "texto": "5.º Mistério Luminoso — A Instituição da Eucaristia. Na Última Ceia, Jesus dá-Se em alimento. Peçamos amor à Eucaristia e gratidão por este dom."
+    },
+    {
+      "id": "papa-01",
+      "titulo": "Pela oração com a Palavra de Deus",
+      "texto": "Rezemos para que a oração com a Palavra de Deus seja alimento nas nossas vidas e fonte de esperança nas nossas comunidades, ajudando-nos a construir uma Igreja mais fraterna e missionária."
+    },
+    {
+      "id": "papa-02",
+      "titulo": "Pelas crianças com doenças incuráveis",
+      "texto": "Rezemos para que as crianças que sofrem de doenças incuráveis e as suas famílias recebam os cuidados médicos e o apoio necessários, sem nunca perderem a força e a esperança."
+    },
+    {
+      "id": "papa-03",
+      "titulo": "Pelo desarmamento e pela paz",
+      "texto": "Rezemos para que as nações avancem em direção a um desarmamento efetivo, especialmente o desarmamento nuclear, e para que os líderes mundiais escolham o caminho do diálogo e da diplomacia em vez da violência."
+    },
+    {
+      "id": "papa-04",
+      "titulo": "Pelos sacerdotes em crise",
+      "texto": "Rezemos pelos sacerdotes que atravessam momentos de crise na sua vocação, para que encontrem o acompanhamento necessário e para que as comunidades os apoiem com compreensão e oração."
+    },
+    {
+      "id": "papa-05",
+      "titulo": "Por uma alimentação para todos",
+      "texto": "Rezemos para que todos, desde os grandes produtores até aos pequenos consumidores, se comprometam a evitar o desperdício de alimentos e para que todos tenham acesso a uma alimentação de qualidade."
+    },
+    {
+      "id": "papa-06",
+      "titulo": "Pelos valores do desporto",
+      "texto": "Rezemos para que o desporto seja um instrumento de paz, encontro e diálogo entre culturas e nações, promovendo valores como o respeito, a solidariedade e a superação pessoal."
+    },
+    {
+      "id": "papa-07",
+      "titulo": "Pelo respeito da vida humana",
+      "texto": "Rezemos pelo respeito e pela proteção da vida humana em todas as suas etapas, reconhecendo-a como um dom de Deus."
+    },
+    {
+      "id": "papa-08",
+      "titulo": "Pela evangelização na cidade",
+      "texto": "Rezemos para que, nas grandes cidades, muitas vezes marcadas pelo anonimato e pela solidão, encontremos novas formas de anunciar o Evangelho, descobrindo caminhos criativos para construir comunidade."
+    },
+    {
+      "id": "papa-09",
+      "titulo": "Pelo cuidado com a água",
+      "texto": "Rezemos por uma gestão justa e sustentável da água, recurso vital, para que todos tenham acesso equitativo a ela."
+    },
+    {
+      "id": "papa-10",
+      "titulo": "Pela pastoral da saúde mental",
+      "texto": "Rezemos para que a pastoral da saúde mental seja integrada em toda a Igreja, ajudando a superar o estigma e a discriminação contra as pessoas com doenças mentais."
+    },
+    {
+      "id": "papa-11",
+      "titulo": "Pelo bom uso das riquezas",
+      "texto": "Rezemos pelo bom uso das riquezas, para que, resistindo à tentação do egoísmo, estejam sempre ao serviço do bem comum e da solidariedade com os mais necessitados."
+    },
+    {
+      "id": "papa-12",
+      "titulo": "Pelas famílias monoparentais",
+      "texto": "Rezemos pelas famílias que vivem a ausência de uma mãe ou de um pai, para que encontrem apoio e acompanhamento na Igreja, e ajuda e força na fé nos momentos difíceis."
+    },
+    {
+      "id": "papa-geral",
+      "titulo": "Pelas intenções do Santo Padre",
+      "texto": "Rezemos pelas intenções do Santo Padre."
+    }
+  ]
+}

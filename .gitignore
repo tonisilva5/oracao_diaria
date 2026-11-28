@@ -1,0 +1,14 @@
+# Áudio das leituras: é gerado todos os dias pela automatização do GitHub,
+# não faz sentido guardá-lo no histórico do repositório.
+audio/leituras/
+
+# Restos de gravações interrompidas
+*.parcial
+__pycache__/
+
+# Pastas de trabalho locais de ferramentas de desenvolvimento
+.claude/
+
+# Ambiente Python local, para o edge-tts (em Linux o Python do sistema não
+# aceita pip install)
+.venv/
